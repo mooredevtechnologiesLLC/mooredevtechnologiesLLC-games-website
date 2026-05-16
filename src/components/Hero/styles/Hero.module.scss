@@ -1,0 +1,125 @@
+.hero {
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6rem 2rem 4rem; // top pad accounts for fixed header
+  background-color: var(--color-bg);
+
+  // Subtle radial warmth emanating from the center
+  background-image: radial-gradient(
+    ellipse 70% 60% at 50% 40%,
+    var(--color-secondary-pale) 0%,
+    transparent 70%
+  );
+}
+
+.content {
+  max-width: 720px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.logoMark {
+  object-fit: contain;
+  filter: drop-shadow(var(--glow-lavender));
+}
+
+.title {
+  font-size: clamp(1.875rem, 5vw, 3rem);
+  color: var(--color-text);
+  line-height: 1.25;
+}
+
+.tagline {
+  font-size: clamp(1.125rem, 2.5vw, 1.5rem);
+  color: var(--color-text-secondary);
+  font-family: var(--font-body);
+  font-weight: 400;
+  line-height: 1.5;
+  max-width: 480px;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 0.5rem;
+}
+
+%btn-base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.75rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition: background-color 200ms ease, border-color 200ms ease, box-shadow 200ms ease;
+}
+
+.btnPrimary {
+  @extend %btn-base;
+  background-color: var(--btn-primary-bg);
+  border: 1.5px solid var(--btn-primary-border);
+  color: var(--btn-primary-text);
+
+  &:hover {
+    background-color: var(--btn-primary-bg-hover);
+    border-color: var(--btn-primary-border-hover);
+    box-shadow: var(--glow-amber);
+    color: var(--btn-primary-text);
+  }
+
+  &:active {
+    background-color: var(--btn-primary-bg-active);
+    border-color: var(--btn-primary-border-active);
+  }
+}
+
+.btnOutline {
+  @extend %btn-base;
+  background-color: var(--btn-outline-bg);
+  border: 1.5px solid var(--btn-outline-border);
+  color: var(--btn-outline-text);
+
+  &:hover {
+    background-color: var(--btn-outline-bg-hover);
+    color: var(--btn-outline-text);
+  }
+
+  &:active {
+    background-color: var(--btn-outline-bg-active);
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding: 5rem 1.25rem 3rem;
+  }
+
+  .logoMark {
+    width: 88px;
+  }
+
+  .actions {
+    flex-direction: column;
+    width: 100%;
+
+    a {
+      width: 100%;
+    }
+  }
+}
+
+/// Diamond grid — rotated squares tiled at 40×40px, lavender stroke.
+.textureDiamond {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cpath d='M20 2L38 20L20 38L2 20Z' fill='none' stroke='%23a78bfa' stroke-opacity='0.22' stroke-width='1'/%3E%3C/svg%3E");
+  background-size: 40px 40px;
+}

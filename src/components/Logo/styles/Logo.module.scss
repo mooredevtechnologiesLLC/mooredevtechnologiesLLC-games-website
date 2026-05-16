@@ -1,0 +1,9 @@
+.logo {
+  display: block;
+  flex-shrink: 0;
+  transition: filter 200ms ease;
+
+  &:hover {
+    filter: drop-shadow(var(--glow-amber));
+  }
+}
