@@ -1,2 +1,6 @@
 _notes
 .DS_Store
+node_modules
+dist
+.env
+.env.local
