@@ -8,9 +8,9 @@ interface NavLink {
 }
 
 const NAV_LINKS: NavLink[] = [
-  { label: 'About', href: '#about' },
-  { label: 'Games', href: '#games' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'About', href: '/#about' },
+  { label: 'Games', href: '/#games' },
+  { label: 'Contact', href: '/#contact' },
 ];
 
 const SCROLL_THRESHOLD = 20;
@@ -28,7 +28,7 @@ export default function Header() {
   return (
     <header className={`${styles.header} ${scrolled ? styles.scrolled : ''}`}>
       <div className={styles.inner}>
-        <a href="#hero" className={styles.logoLink} aria-label="MooreDev Technologies Games — back to top">
+        <a href="/" className={styles.logoLink} aria-label="MooreDev Technologies Games — back to home">
           <Logo size={28} aria-hidden="true" />
           <span className={styles.wordmark}>MooreDev Technologies - Games</span>
         </a>
