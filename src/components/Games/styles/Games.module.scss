@@ -83,6 +83,21 @@
   background-color: var(--color-accent-sage);
 }
 
+.cardLink {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: var(--shadow-xl);
+    transform: translateY(-4px);
+  }
+
+  &:active {
+    transform: translateY(-1px);
+  }
+}
+
 .cardBadge {
   display: inline-flex;
   align-items: center;

@@ -6,6 +6,7 @@ interface GameCard {
   genre: string;
   platform: string;
   accent: 'amber' | 'lavender' | 'sage';
+  link?: string;
 }
 
 const GAMES: GameCard[] = [
@@ -45,9 +46,9 @@ export default function Games() {
   );
 }
 
-function GameCardItem({ name, description, genre, platform, accent }: GameCard) {
-  return (
-    <article className={`${styles.card} ${styles[`accent-${accent}`]}`}>
+function GameCardItem({ name, description, genre, platform, accent, link }: GameCard) {
+  const content = (
+    <>
       <div className={styles.cardBadge}>In Development</div>
       <h3 className={styles.cardName}>{name}</h3>
       <p className={styles.cardDesc}>{description}</p>
@@ -55,6 +56,25 @@ function GameCardItem({ name, description, genre, platform, accent }: GameCard) 
         <span className={styles.cardGenre}>{genre}</span>
         <span className={styles.cardPlatform}>{platform}</span>
       </div>
+    </>
+  );
+
+  if (link) {
+    return (
+      <a
+        href={link}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={`${styles.card} ${styles[`accent-${accent}`]} ${styles.cardLink}`}
+      >
+        {content}
+      </a>
+    );
+  }
+
+  return (
+    <article className={`${styles.card} ${styles[`accent-${accent}`]}`}>
+      {content}
     </article>
   );
 }
