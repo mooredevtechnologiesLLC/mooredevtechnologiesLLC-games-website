@@ -38,7 +38,7 @@ export default function About() {
           <p>
             We believe the best games respect your time and meet you where you are. Whether you have
             five minutes or five hours, a game should slot naturally into your life rather than
-            demanding it. Our games don't require account sign up, subscriptions, and will never ruin the game experience by showing ads.
+            demanding it. Our games don't require account sign up, subscriptions, and will never ruin the game experience by forcing you to watch ads.
           </p>
           <p>
             We bring the same care and thoughtfulness from our utility apps into every game we make —
