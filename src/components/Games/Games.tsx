@@ -10,11 +10,19 @@ interface GameCard {
 
 const GAMES: GameCard[] = [
   {
+    name: 'Submarine: Reef Pilot',
+    description:
+      'An underwater submarine side scroller that provides a casual adventure with simple game mechanics and delightful artwork.',
+    genre: 'Casual · Puzzle',
+    platform: 'iOS',
+    accent: 'lavender',
+  },
+  {
     name: 'Coming Soon',
     description:
-      'Our first game is in development — a casual puzzle experience designed to be picked up for a few minutes or a few hours, with no pressure and plenty of charm.',
+      'Our first puzzle game is in development — a casual puzzle experience designed to be picked up for a few minutes or a few hours, with no pressure and plenty of charm.',
     genre: 'Casual · Puzzle',
-    platform: 'iOS · Android',
+    platform: 'iOS',
     accent: 'lavender',
   },
 ];
