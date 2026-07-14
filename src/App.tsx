@@ -6,6 +6,8 @@ import Games from './components/Games/Games';
 import Contact from './components/Contact/Contact';
 import Footer from './components/Footer/Footer';
 import PrivacyPolicy from './components/PrivacyPolicy/PrivacyPolicy';
+import SubmarineReefPilotPage from './pages/SubmarineReefPilot';
+import ScrollToTop from './components/ScrollToTop';
 
 function HomePage() {
   return (
@@ -21,9 +23,11 @@ function HomePage() {
 export default function App() {
   return (
     <>
+      <ScrollToTop />
       <Header />
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/games/submarine-reef-pilot" element={<SubmarineReefPilotPage />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
       </Routes>
       <Footer />

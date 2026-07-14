@@ -152,6 +152,30 @@
   font-family: var(--font-mono);
 }
 
+.appStoreWrapper {
+  margin-top: 0.5rem;
+  display: block;
+  width: fit-content;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.appStoreBadge {
+  width: 120px;
+  height: 40px;
+  display: block;
+  transition: opacity 200ms ease, transform 200ms ease;
+
+  &:hover {
+    opacity: 0.85;
+    transform: scale(1.02);
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
 @media (max-width: 480px) {
   .games {
     padding: 4rem 1.25rem;
