@@ -83,6 +83,18 @@
   background-color: var(--color-accent-sage);
 }
 
+.card[class*='accent-clay']::before {
+  background-color: var(--color-accent-clay);
+}
+
+.card[class*='accent-rose']::before {
+  background-color: var(--color-accent-rose);
+}
+
+.card[class*='accent-sky']::before {
+  background-color: var(--color-accent-sky);
+}
+
 .cardLink {
   text-decoration: none;
   color: inherit;
@@ -107,10 +119,134 @@
   font-weight: 600;
   letter-spacing: 0.05em;
   text-transform: uppercase;
+  width: fit-content;
+}
+
+.badge-amber {
+  background-color: var(--badge-amber-bg);
+  border: 1px solid var(--badge-amber-border);
+  color: var(--badge-amber-text);
+}
+
+.badge-lavender {
   background-color: var(--badge-lavender-bg);
   border: 1px solid var(--badge-lavender-border);
   color: var(--badge-lavender-text);
-  width: fit-content;
+}
+
+.badge-sage {
+  background-color: var(--badge-sage-bg);
+  border: 1px solid var(--badge-sage-border);
+  color: var(--badge-sage-text);
+}
+
+.badge-clay {
+  background-color: var(--badge-clay-bg);
+  border: 1px solid var(--badge-clay-border);
+  color: var(--badge-clay-text);
+}
+
+.badge-rose {
+  background-color: var(--badge-rose-bg);
+  border: 1px solid var(--badge-rose-border);
+  color: var(--badge-rose-text);
+}
+
+.badge-sky {
+  background-color: var(--badge-sky-bg);
+  border: 1px solid var(--badge-sky-border);
+  color: var(--badge-sky-text);
+}
+
+.carousel {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  margin-top: -1rem;
+}
+
+.carouselMedia {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carouselImage,
+.carouselVideo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.carouselButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: background-color 200ms ease, transform 200ms ease;
+  z-index: 10;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+    transform: translateY(-50%) scale(1.1);
+  }
+
+  &:active {
+    transform: translateY(-50%) scale(0.95);
+  }
+}
+
+.carouselPrev {
+  left: 0.75rem;
+}
+
+.carouselNext {
+  right: 0.75rem;
+}
+
+.carouselDots {
+  position: absolute;
+  bottom: 0.75rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.5rem;
+  z-index: 10;
+}
+
+.carouselDot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+  border: none;
+  cursor: pointer;
+  transition: background-color 200ms ease, transform 200ms ease;
+  padding: 0;
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.7);
+    transform: scale(1.2);
+  }
+}
+
+.carouselDotActive {
+  background-color: rgba(255, 255, 255, 1);
+  transform: scale(1.3);
 }
 
 .cardName {
@@ -136,19 +272,10 @@
 
 .cardGenre {
   font-size: 0.75rem;
-  font-weight: 500;
+  font-weight: bolder;
   letter-spacing: 0.05em;
   text-transform: uppercase;
   color: var(--color-secondary);
-  font-family: var(--font-mono);
-}
-
-.cardPlatform {
-  font-size: 0.75rem;
-  font-weight: 500;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: var(--color-text-disabled);
   font-family: var(--font-mono);
 }
 

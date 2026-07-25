@@ -1,20 +1,8 @@
 import { GameMarketingPage } from '../components/GameMarketingPage';
-import type { GameMarketingData } from '../components/GameMarketingPage/types';
+import type { GameMarketingData, MediaItem } from '../components/GameMarketingPage/types';
 import { SUPPORT_EMAIL, SUPPORT_WEBSITE } from '../constants';
 
-const submarineGameData: GameMarketingData = {
-  // Hero Section
-  name: 'Submarine: Reef Pilot',
-  tagline: 'Easy to pick up, hard to master',
-  description:
-    'Dive into the depths with this action-packed endless submarine game! Steer your sub through beautiful underwater landscapes while dodging torpedoes, mines, and depth charges. How long can you survive?',
-  accent: 'lavender',
-  // Metadata
-  genre: 'Action · Endless Runner',
-  platform: 'iOS',
-  releaseDate: 'Friday, 7/24/2026',
-
-   media: [
+export const REEF_RUNNER_MEDIA: MediaItem[] = [
     {
       type: 'video',
       src: '/assets/submarine-reef-pilot/gameplay.mp4',
@@ -57,7 +45,21 @@ const submarineGameData: GameMarketingData = {
       alt: 'Game leaderboard UI showing options for Top Runs and All-time boards',
       caption: 'Compete in global leaderboards',
     },
-  ],
+  ];
+
+const submarineGameData: GameMarketingData = {
+  // Hero Section
+  name: 'Submarine: Reef Pilot',
+  tagline: 'Easy to pick up, hard to master',
+  description:
+    'Dive into the depths with this action-packed endless submarine game! Steer your sub through beautiful underwater landscapes while dodging torpedoes, mines, and depth charges. How long can you survive?',
+  accent: 'lavender',
+  // Metadata
+  genre: 'Action · Endless Runner',
+  platform: 'iOS',
+  releaseDate: 'Friday, 7/24/2026',
+
+   media: REEF_RUNNER_MEDIA,
 
   // Features
   features: [

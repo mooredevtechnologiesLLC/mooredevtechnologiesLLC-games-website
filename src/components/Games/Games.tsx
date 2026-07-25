@@ -1,24 +1,45 @@
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 import styles from './styles/Games.module.scss';
+import { REEF_RUNNER_MEDIA } from '../../pages/SubmarineReefPilot';
+
+type GameStatus = 'in-development' | 'beta' | 'released' | 'coming-soon' | 'early-access';
+
+export interface MediaItem {
+  type: 'image' | 'video';
+  src: string;
+  alt?: string;
+  thumbnail?: string;
+}
 
 interface GameCard {
   name: string;
   description: string;
   genre: string;
-  platform: string;
-  accent: 'amber' | 'lavender' | 'sage';
+  accent: 'amber' | 'lavender' | 'sage' | 'clay' | 'rose' | 'sky';
+  status?: GameStatus;
+  media?: MediaItem[];
   link?: string;
   appStoreLink?: string;
 }
+
+const STATUS_LABELS: Record<GameStatus, string> = {
+  'in-development': 'In Development',
+  'beta': 'Beta',
+  'released': 'Released',
+  'coming-soon': 'Coming Soon',
+  'early-access': 'Early Access',
+};
 
 const GAMES: GameCard[] = [
   {
     name: 'Submarine: Reef Pilot',
     description:
       'An underwater submarine side scroller that provides a casual adventure with simple game mechanics and delightful artwork.',
-    genre: 'Casual · Puzzle',
-    platform: 'iOS',
-    accent: 'lavender',
+    genre: 'Casual · Action',
+    accent: 'sky',
+    status: 'released',
+    media: REEF_RUNNER_MEDIA,
     link: '/games/submarine-reef-pilot',
     appStoreLink: 'https://apps.apple.com/us/app/submarine-reef-pilot/id6789714045'
   },
@@ -27,8 +48,8 @@ const GAMES: GameCard[] = [
     description:
       'Our first puzzle game is in development — a casual puzzle experience designed to be picked up for a few minutes or a few hours, with no pressure and plenty of charm.',
     genre: 'Casual · Puzzle',
-    platform: 'iOS',
     accent: 'lavender',
+    status: 'in-development',
   },
 ];
 
@@ -47,6 +68,84 @@ export default function Games() {
         </div>
       </div>
     </section>
+  );
+}
+
+function MediaCarousel({ media }: { media: MediaItem[] }) {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  if (!media || media.length === 0) return null;
+
+  const handlePrevious = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setCurrentIndex((prev) => (prev === 0 ? media.length - 1 : prev - 1));
+  };
+
+  const handleNext = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setCurrentIndex((prev) => (prev === media.length - 1 ? 0 : prev + 1));
+  };
+
+  const handleDotClick = (e: React.MouseEvent, index: number) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setCurrentIndex(index);
+  };
+
+  const currentMedia = media[currentIndex];
+
+  return (
+    <div className={styles.carousel}>
+      <div className={styles.carouselMedia}>
+        {currentMedia.type === 'image' ? (
+          <img
+            src={currentMedia.src}
+            alt={currentMedia.alt || 'Game screenshot'}
+            className={styles.carouselImage}
+          />
+        ) : (
+          <video
+            src={currentMedia.src}
+            className={styles.carouselVideo}
+            controls
+            poster={currentMedia.thumbnail}
+          />
+        )}
+      </div>
+
+      {media.length > 1 && (
+        <>
+          <button
+            className={`${styles.carouselButton} ${styles.carouselPrev}`}
+            onClick={handlePrevious}
+            aria-label="Previous media"
+          >
+            ‹
+          </button>
+          <button
+            className={`${styles.carouselButton} ${styles.carouselNext}`}
+            onClick={handleNext}
+            aria-label="Next media"
+          >
+            ›
+          </button>
+          <div className={styles.carouselDots}>
+            {media.map((_, index) => (
+              <button
+                key={index}
+                className={`${styles.carouselDot} ${
+                  index === currentIndex ? styles.carouselDotActive : ''
+                }`}
+                onClick={(e) => handleDotClick(e, index)}
+                aria-label={`Go to media ${index + 1}`}
+              />
+            ))}
+          </div>
+        </>
+      )}
+    </div>
   );
 }
 
@@ -92,27 +191,31 @@ function AppStoreBadge() {
   );
 }
 
-function GameCardItem({ name, description, genre, platform, accent, link, appStoreLink }: GameCard) {
+function GameCardItem({ name, description, genre, accent, status, media, link, appStoreLink }: GameCard) {
   const content = (
     <>
-      <div className={styles.cardBadge}>In Development</div>
+      {status && (
+        <div className={`${styles.cardBadge} ${styles[`badge-${accent}`]}`}>
+          {STATUS_LABELS[status]}
+        </div>
+      )}
+      {media && media.length > 0 && <MediaCarousel media={media} />}
       <h3 className={styles.cardName}>{name}</h3>
       <p className={styles.cardDesc}>{description}</p>
       <div className={styles.cardMeta}>
         <span className={styles.cardGenre}>{genre}</span>
-        <span className={styles.cardPlatform}>{platform}</span>
+        {appStoreLink && (
+          <a
+            href={appStoreLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.appStoreWrapper}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <AppStoreBadge />
+          </a>
+        )}
       </div>
-      {appStoreLink && (
-        <a
-          href={appStoreLink}
-          target="_blank"
-          rel="noopener noreferrer"
-          className={styles.appStoreWrapper}
-          onClick={(e) => e.stopPropagation()}
-        >
-          <AppStoreBadge />
-        </a>
-      )}
     </>
   );
 
