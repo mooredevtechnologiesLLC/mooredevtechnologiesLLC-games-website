@@ -9,11 +9,10 @@ const submarineGameData: GameMarketingData = {
   description:
     'Dive into the depths with this action-packed endless submarine game! Steer your sub through beautiful underwater landscapes while dodging torpedoes, mines, and depth charges. How long can you survive?',
   accent: 'lavender',
-
   // Metadata
   genre: 'Action · Endless Runner',
   platform: 'iOS',
-  releaseDate: 'Coming Soon',
+  releaseDate: 'Friday, 7/24/2026',
 
    media: [
     {
@@ -178,6 +177,14 @@ Plus, gather coins to rack up points and discover rare treasure chests on the oc
     'iCloud',
     'casual',
     'challenging',
+  ],
+
+  // Downloads
+  downloads: [
+    {
+      platform: 'ios',
+      url: 'https://apps.apple.com/us/app/submarine-reef-pilot/id6789714045',
+    },
   ],
 
   // System Requirements

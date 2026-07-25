@@ -20,6 +20,7 @@ const GAMES: GameCard[] = [
     platform: 'iOS',
     accent: 'lavender',
     link: '/games/submarine-reef-pilot',
+    appStoreLink: 'https://apps.apple.com/us/app/submarine-reef-pilot/id6789714045'
   },
   {
     name: 'Coming Soon',
